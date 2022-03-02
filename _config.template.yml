@@ -4,9 +4,9 @@
 
 # Head info
 head:
-    favicon: "/img/favicon.png"
-    high_res_favicon: "/img/favicon.png"
-    apple_touch_icon: "/img/favicon.png"
+    favicon: '/img/favicon.png'
+    high_res_favicon: '/img/favicon.png'
+    apple_touch_icon: '/img/favicon.png'
     keywords:
     site_verification:
         google:
@@ -19,9 +19,8 @@ head:
 # Jump Links Settings
 url:
     rss:
-    daily_pic: "#"
-    logo: "#"
-
+    daily_pic: '#'
+    logo: '#'
 
 # ---------------------------------------------------------------
 # Style Settings
@@ -33,14 +32,14 @@ scheme: Paradox
 
 # UI & UX: slogan, color, effect
 uiux:
-    slogan: "Hi, nice to meet you"
-    theme_color: "#0097A7"
-    theme_sub_color: "#00838F"
-    hyperlink_color: "#00838F"
-    button_color: "#757575"
-    android_chrome_color: "#0097A7"
-    nprogress_color: "#29d"
-    nprogress_buffer: "800"
+    slogan: 'Hi, nice to meet you'
+    theme_color: '#0097A7'
+    theme_sub_color: '#00838F'
+    hyperlink_color: '#00838F'
+    button_color: '#757575'
+    android_chrome_color: '#0097A7'
+    nprogress_color: '#29d'
+    nprogress_buffer: '800'
 
 # JS Effect Switches
 js_effect:
@@ -63,22 +62,22 @@ thumbnail:
 #        type available value: A (animal), C (culture), N (nature), S (space), T (travel)
 background:
     # purecolor: "#F5F5F5"
-    bgimg: "/img/bg.jpg"
+    bgimg: '/img/bg.jpg'
     bing:
         enable: false
         parameter:
 
 # Images Settings
 img:
-    logo: "/img/logo.png"
-    avatar: "/img/avatar.jpg"
-    daily_pic: "/img/daily_pic.gif"
-    sidebar_header: "/img/sidebar_header.png"
-    random_thumbnail: "/img/random/material-"
+    logo: '/img/logo.png'
+    avatar: '/img/avatar.jpg'
+    daily_pic: '/img/daily_pic.gif'
+    sidebar_header: '/img/sidebar_header.png'
+    random_thumbnail: '/img/random/material-'
     footer_image:
         #qiniu_logo:
-            #link: "https://www.qiniu.com/"
-            #src: "/img/qiniu_logo.png"
+        #link: "https://www.qiniu.com/"
+        #src: "/img/qiniu_logo.png"
 
 # Custom Fonts
 #    family: the font-family which will be used in the theme
@@ -123,7 +122,7 @@ qrcode:
 #        theme: # Available value in /source/css/prettify/[theme].min.css
 prettify:
     enable: false
-    theme: "github-v2"
+    theme: 'github-v2'
 
 #    Hanabi (https://github.com/egoist/hanabi)
 #        line_number: [true/false] # Show line number for code block
@@ -161,16 +160,16 @@ gallery:
 # TOC Button
 
 toc:
-#   use: choose whether the line_number of toc will show or not.
-#       Available value of "linenumber": true | false
+    #   use: choose whether the line_number of toc will show or not.
+    #       Available value of "linenumber": true | false
     linenumber: true
 
 # SNS Menu
 sns:
     email: youremail@email.com
-    facebook: "https://www.facebook.com/facebook"
-    twitter: "https://twitter.com/twitter"
-    googleplus: "https://www.google.com/"
+    facebook: 'https://www.facebook.com/facebook'
+    twitter: 'https://twitter.com/twitter'
+    googleplus: 'https://www.google.com/'
     weibo:
     instagram:
     tumblr:
@@ -196,7 +195,7 @@ sns_share:
 sidebar:
     dropdown:
         Email Me:
-            link: "#"
+            link: '#'
             icon: email
     homepage:
         use: true
@@ -212,9 +211,9 @@ sidebar:
         divider: false
     pages:
         # About:
-            #link: "/about"
-            #icon: person
-            #divider: false
+        #link: "/about"
+        #icon: person
+        #divider: false
     article_num:
         use: false
         divider: false
@@ -224,7 +223,6 @@ sidebar:
         support: false
         feedback: false
         material: false
-
 
 # ---------------------------------------------------------------
 # Integrated Services
@@ -242,12 +240,12 @@ comment:
     changyan_conf:
     changyan_thread_key_type: path
     livere_data_uid:
-    gitment_repo:   # git repo of the hexo
-    gitment_owner:  # git repo's owner
-    gitment_client_id:  # github app client id
-    gitment_client_secret :  # github app client secret
-    valine_leancloud_appId:  # leancloud application app id
-    valine_leancloud_appKey:  # leancloud application app key
+    gitment_repo: # git repo of the hexo
+    gitment_owner: # git repo's owner
+    gitment_client_id: # github app client id
+    gitment_client_secret: # github app client secret
+    valine_leancloud_appId: # leancloud application app id
+    valine_leancloud_appKey: # leancloud application app key
     valine_notify: false # valine mail notify (true/false) https://github.com/xCss/Valine/wiki
     valine_verify: false # valine verify code (true/false)
     valine_pageSize: 10 # comment list page size
@@ -290,30 +288,30 @@ leancloud:
     enable: false
     app_id: #你的 app_id
     app_key: #你的 app_key
-    av_core_mini: "https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"
+    av_core_mini: 'https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js'
 
 # Busuanzi 不蒜子 Views
 busuanzi:
     enable: false
     all_site_uv: false
     post_pv: false
-    busuanzi_pure_mini_js: "https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
+    busuanzi_pure_mini_js: 'https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js'
 
 # Files Vendors
 # Set a CDN for the files src you want to customize. The url should with protocol.
 # Default(empty) will load the files from the origin server.
 vendors:
-# MaterialCDN
-#   You can load theme unique files from your private cdn or oss.
-#   The new src will have the base domain you configured below.
-#   For example
-#       materialcdn: https://cdn.jsdelivr.net/npm/hexo-material@1.4.0/source
+    # MaterialCDN
+    #   You can load theme unique files from your private cdn or oss.
+    #   The new src will have the base domain you configured below.
+    #   For example
+    #       materialcdn: https://cdn.jsdelivr.net/npm/hexo-material@1.4.0/source
     materialcdn:
 
-# Third party library
-#   You can load these files from public cdn.
-#   For example
-#       jquery: https://cdn.bootcss.com/jquery/2.2.1/jquery.js
+    # Third party library
+    #   You can load these files from public cdn.
+    #   For example
+    #       jquery: https://cdn.bootcss.com/jquery/2.2.1/jquery.js
     # jQuery 2.2.0
     jquery:
     # nprogress 0.2.0
