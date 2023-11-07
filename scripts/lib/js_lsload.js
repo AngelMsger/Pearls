@@ -5,11 +5,13 @@ var get_file_hex = require("./get_file_hex");
 var fs = require('fs');
 
 function jsHelper() {
+  var hexo = arguments[0];
+
   var result = '';
   var path = '';
   var key = ''
 
-  for (var i = 0, len = arguments.length; i < len; i++) {
+  for (var i = 1, len = arguments.length; i < len; i++) {
 
     if (typeof arguments[i] === 'string'){
       path = arguments[i];
@@ -27,7 +29,7 @@ function jsHelper() {
       if (path.indexOf('?') < 0 && path.substring(path.length - 3, path.length) !== '.js') path += '.js';
       var localpath = path_for.call(this,path);
       result += '<script>lsloader.load("' + key + '","' +
-        require("../../../../node_modules/hexo/lib/plugins/helper/url_for").call(this,path) +
+        hexo.url_for(path) +
         (fs.existsSync(localpath)?'?' + get_file_hex(localpath):'') + '", true)</script>'
     }
   }

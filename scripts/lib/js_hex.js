@@ -4,10 +4,12 @@ var path_for = require("./path_for");
 var get_file_hex = require("./get_file_hex");
 
 function jsHelper() {
+  var hexo = arguments[0];
+
   var result = '';
   var path = '';
 
-  for (var i = 0, len = arguments.length; i < len; i++) {
+  for (var i = 1, len = arguments.length; i < len; i++) {
     path = arguments[i];
 
     if (i) result += '\n';
@@ -16,7 +18,7 @@ function jsHelper() {
       result += jsHelper.apply(this, path);
     } else {
       if (path.indexOf('?') < 0 && path.substring(path.length - 3, path.length) !== '.js') path += '.js';
-      result += '<script src="' + require("../../../../node_modules/hexo/lib/plugins/helper/url_for").call(this,path) + '?' + get_file_hex(path_for.call(this,path)) + '"></script>';
+      result += '<script src="' + hexo.url_for(path) + '?' + get_file_hex(path_for.call(this,path)) + '"></script>';
     }
   }
 
