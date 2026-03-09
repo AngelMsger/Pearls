@@ -734,7 +734,7 @@ a {
     border: 0;
     flex-direction: column
 }
-#scheme-Paradox .material-post_container .meta+.mdl-card__supporting-text p {} #scheme-Paradox .material-post_container .comments {
+#scheme-Paradox .material-post_container .comments {
     background-color: #eee;
     display: flex;
     box-sizing: border-box;
@@ -747,7 +747,7 @@ a {
 #scheme-Paradox .material-post_container .comments>form {
     display: flex;
     margin-bottom: 1pc;
-    flex-diretion: row
+    flex-direction: row
 }
 #scheme-Paradox .material-post_container .comments>form .mdl-textfield {
     margin-right: 1pc;
@@ -1552,9 +1552,6 @@ a {
         margin-bottom: 24px;
     }
 }
-@media screen and (min-width: 1183px) {
-    #scheme-Isolation .header-title {}
-}
 #scheme-Isolation .header-title a {
     color: #252b2d;
 }
@@ -1606,7 +1603,7 @@ a {
         clear: both;
     }
 }
-#scheme-Isolation .header-nav-item {} @media screen and (min-width: 1183px) {
+@media screen and (min-width: 1183px) {
     #scheme-Isolation .header-nav-item:first-child {
         padding-top: 24px;
         border-top: 1px solid #c7ced1;
@@ -2409,7 +2406,7 @@ a {
 /*****************/
 
 .material-icons {
-    font-family: 'Material Icons';
+    font-family: 'Material Icons', sans-serif;
     font-weight: 400;
     font-style: normal;
     font-size: 24px;
@@ -2576,7 +2573,7 @@ a {
     border-radius: 100%;
     -moz-transform: scale(0);
     -ms-transform: scale(0);
-    webkit-transform: scale(0);
+    -webkit-transform: scale(0);
     transform: scale(0)
 }
 .ink.animate {

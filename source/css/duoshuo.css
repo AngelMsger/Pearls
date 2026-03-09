@@ -40,8 +40,11 @@
     border: none
 }
 @media screen and (max-width:480px) {
+    #ds-reset .ds-avatar,
+    #ds-reset .ds-avatar img {
     width: auto;
     height: auto
+    }
 }
 #ds-thread #ds-reset ul.ds-children .ds-avatar,
 #ds-thread #ds-reset ul.ds-children .ds-avatar img {
@@ -50,7 +53,8 @@
     border: none!important
 }
 #ds-thread #ds-reset .ds-replybox .ds-avatar {
-    top: 5px width: 30px;
+    top: 5px;
+    width: 30px;
     height: 30px;
     border: none
 }

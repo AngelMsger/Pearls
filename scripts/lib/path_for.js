@@ -1,13 +1,14 @@
-var path = require('path');
-var fs = require('fs');
+const fs = require('fs');
+const path = require('path');
 
 function pathFor(paths) {
-  var res = "";
-  res = path.join(this.theme_dir,"source" , paths);
-  if(!fs.existsSync(res)){
-    res = path.join(this.source_dir, paths);
+  let resolvedPath = path.join(this.theme_dir, 'source', paths);
+
+  if (!fs.existsSync(resolvedPath)) {
+    resolvedPath = path.join(this.source_dir, paths);
   }
-  return res;
+
+  return resolvedPath;
 }
 
 module.exports = pathFor;

@@ -1,14 +1,13 @@
-var fs = require('fs');
-var crypto = require('crypto');
-
+const crypto = require('crypto');
+const fs = require('fs');
 
 function getFileHexSync(filepath) {
-    var buffer = fs.readFileSync(filepath);
-    var fsHash = crypto.createHash('md5');
+  const buffer = fs.readFileSync(filepath);
+  const fileHash = crypto.createHash('md5');
 
-    fsHash.update(buffer);
-    var sha384 = fsHash.digest('base64');
-    return sha384;
+  fileHash.update(buffer);
+
+  return fileHash.digest('base64');
 }
 
-module.exports = getFileHexSync
+module.exports = getFileHexSync;

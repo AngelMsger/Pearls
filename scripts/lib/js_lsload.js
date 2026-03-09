@@ -1,39 +1,43 @@
 'use strict';
 
-var path_for = require("./path_for");
-var get_file_hex = require("./get_file_hex");
-var fs = require('fs');
+const fs = require('fs');
+const pathFor = require('./path_for');
+const getFileHex = require('./get_file_hex');
 
-function jsHelper() {
-  var hexo = arguments[0];
-
-  var result = '';
-  var path = '';
-  var key = ''
-
-  for (var i = 1, len = arguments.length; i < len; i++) {
-
-    if (typeof arguments[i] === 'string'){
-      path = arguments[i];
-      key = path;
-    }else{
-      path = arguments[i].path;
-      key = arguments[i].key
-    }
-
-    if (i) result += '\n';
-
-    if (Array.isArray(path)) {
-      result += jsHelper.apply(this, path);
-    } else {
-      if (path.indexOf('?') < 0 && path.substring(path.length - 3, path.length) !== '.js') path += '.js';
-      var localpath = path_for.call(this,path);
-      result += '<script>lsloader.load("' + key + '","' +
-        hexo.url_for(path) +
-        (fs.existsSync(localpath)?'?' + get_file_hex(localpath):'') + '", true)</script>'
-    }
+function normalizeEntry(entry) {
+  if (typeof entry === 'string') {
+    return {
+      path: entry,
+      key: entry,
+    };
   }
-  return result;
+
+  return entry;
+}
+
+function ensureJsPath(assetPath) {
+  if (assetPath.includes('?') || assetPath.endsWith('.js')) {
+    return assetPath;
+  }
+
+  return `${assetPath}.js`;
+}
+
+function jsHelper(hexo, ...entries) {
+  return entries.reduce((result, entry, index) => {
+    const separator = index > 0 ? '\n' : '';
+
+    if (Array.isArray(entry)) {
+      return `${result}${separator}${jsHelper.call(this, hexo, ...entry)}`;
+    }
+
+    const normalized = normalizeEntry(entry);
+    const assetPath = ensureJsPath(normalized.path);
+    const localPath = pathFor.call(this, assetPath);
+    const assetHash = fs.existsSync(localPath) ? `?${getFileHex(localPath)}` : '';
+
+    return `${result}${separator}<script>lsloader.load("${normalized.key}","${hexo.url_for(assetPath)}${assetHash}", true)</script>`;
+  }, '');
 }
 
 module.exports = jsHelper;

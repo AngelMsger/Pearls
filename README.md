@@ -6,8 +6,8 @@
 <p>
 <img alt="Version" src="https://img.shields.io/badge/version-1.5.6-757575.svg?style=flat-square"/>
 <a href="https://blh.im"><img alt="Author" src="https://img.shields.io/badge/author-bollnh-red.svg?style=flat-square"/></a>
-<a href="https://hexo.io"><img alt="Hexo" src="https://img.shields.io/badge/hexo-3.0+-0e83cd.svg?style=flat-square"/></a>
-<a href="https://nodejs.org/"><img alt="node.js" src="https://img.shields.io/badge/node.js-6.0%2B-43853d.svg?style=flat-square"/></a>
+<a href="https://hexo.io"><img alt="Hexo" src="https://img.shields.io/badge/hexo-8.0+-0e83cd.svg?style=flat-square"/></a>
+<a href="https://nodejs.org/"><img alt="node.js" src="https://img.shields.io/badge/node.js-24%20verified-43853d.svg?style=flat-square"/></a>
 <a href="https://www.npmjs.com/package/hexo-material"><img alt="npm" src="https://img.shields.io/npm/dt/hexo-material.svg?style=flat-square"/></a>
 </p>
 
@@ -21,6 +21,7 @@ English | [简体中文](./README.zh.md)
 
 - [Demo](#demo)
 - [Docs](#docs)
+- [Compatibility](#compatibility)
 - [Download](#download)
 - [Contributing](#contributing)
 - [License](#license)
@@ -39,6 +40,14 @@ English | [简体中文](./README.zh.md)
 [Material Docs](https://neko-dev.github.io/material-theme-docs/#/)
 
 > [Docs Source Code](https://github.com/neko-dev/material-theme-docs)
+
+## Compatibility
+
+- Verified with `Hexo 8.1.1` on `Node.js 24`.
+- The theme now handles missing `config.feed` safely during page generation.
+- Vendored frontend assets were refreshed for modern browser/runtime compatibility:
+  `jQuery 3.7.1`, `jquery-lazyload 1.9.7`, and `MathJax 2.7.9`.
+- `MathJax` remains on the `2.x` line intentionally because the theme still uses `MathJax.Hub.*` APIs.
 
 
 ## Download
@@ -80,6 +89,8 @@ Before you start your contributing, please read the [Contributing Rules Wiki](ht
 ## Changelog
 
 [View our release notes](https://github.com/bollnh/hexo-theme-material/releases)
+
+[Local changelog](./CHANGELOG.md)
 
 
 ## License

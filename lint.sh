@@ -1,19 +1,47 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Lint EJS files
-for f in $(find ./layout -name "*.ejs"); do
-  echo $f;
-  node_modules/.bin/ejslint $f;
-done
+set -euo pipefail
 
-# Lint CSS files
-for f in $(find ./source/ -name "*.css" | grep -v ".min.css"); do
-  echo $f;
-  node_modules/.bin/sass-lint -v -q $f;
-done
+target="${1:-all}"
 
-# Lint JS files
-for f in $(find ./source/ -name "*.js" | grep -v ".min.js"); do
-  echo $f;
-  node_modules/.bin/eslint $f;
-done
+lint_ejs() {
+  while IFS= read -r -d '' file; do
+    echo "$file"
+    npx --no-install ejslint "$file"
+  done < <(find ./layout -type f -name '*.ejs' -print0)
+}
+
+lint_css() {
+  while IFS= read -r -d '' file; do
+    echo "$file"
+    npx --no-install stylelint "$file"
+  done < <(find ./source/css -type f -name '*.css' ! -name '*.min.css' ! -path './source/css/material-icons.css' -print0)
+}
+
+lint_js() {
+  while IFS= read -r -d '' file; do
+    echo "$file"
+    npx --no-install eslint "$file"
+  done < <(find ./scripts -type f -name '*.js' -print0)
+}
+
+case "$target" in
+  ejs)
+    lint_ejs
+    ;;
+  css)
+    lint_css
+    ;;
+  js)
+    lint_js
+    ;;
+  all)
+    lint_ejs
+    lint_css
+    lint_js
+    ;;
+  *)
+    echo "Usage: $0 [ejs|css|js|all]" >&2
+    exit 1
+    ;;
+esac

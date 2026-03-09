@@ -1,28 +1,27 @@
 'use strict';
 
-var path_for = require("./path_for");
-var get_file_hex = require("./get_file_hex");
+const pathFor = require('./path_for');
+const getFileHex = require('./get_file_hex');
 
-function jsHelper() {
-  var hexo = arguments[0];
-
-  var result = '';
-  var path = '';
-
-  for (var i = 1, len = arguments.length; i < len; i++) {
-    path = arguments[i];
-
-    if (i) result += '\n';
-
-    if (Array.isArray(path)) {
-      result += jsHelper.apply(this, path);
-    } else {
-      if (path.indexOf('?') < 0 && path.substring(path.length - 3, path.length) !== '.js') path += '.js';
-      result += '<script src="' + hexo.url_for(path) + '?' + get_file_hex(path_for.call(this,path)) + '"></script>';
-    }
+function ensureJsPath(assetPath) {
+  if (assetPath.includes('?') || assetPath.endsWith('.js')) {
+    return assetPath;
   }
 
-  return result;
+  return `${assetPath}.js`;
+}
+
+function jsHelper(hexo, ...paths) {
+  return paths.reduce((result, entry, index) => {
+    const assetPath = ensureJsPath(entry);
+    const separator = index > 0 ? '\n' : '';
+
+    if (Array.isArray(entry)) {
+      return `${result}${separator}${jsHelper.call(this, hexo, ...entry)}`;
+    }
+
+    return `${result}${separator}<script src="${hexo.url_for(assetPath)}?${getFileHex(pathFor.call(this, assetPath))}"></script>`;
+  }, '');
 }
 
 module.exports = jsHelper;
