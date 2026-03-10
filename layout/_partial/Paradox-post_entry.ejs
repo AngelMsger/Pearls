@@ -1,16 +1,17 @@
-<div class="post_entry-module mdl-card <% if(theme.card_elevation) { %><%= 'mdl-shadow--' + theme.card_elevation + 'dp' %><% } %> mdl-cell mdl-cell--12-col fade out">
+<div class="post_entry-module mdl-card <% if(theme.card_elevation) { %><%= 'mdl-shadow--' + theme.card_elevation + 'dp' %><% } %> mdl-cell mdl-cell--12-col fade">
     <!-- Post Thumbnail -->
     <% if(!post.thumbnail) { %>
         <% if(!theme.thumbnail.purecolor) { %>
             <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <% var randomThumbnail = Math.floor(Math.random() * theme.thumbnail.random_amount) + 1; %>
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50" style="background-image:url('<%= url_for(theme.img.random_thumbnail) %><%= randomThumbnail %>.png')" onclick="window.location.href='<%= url_for(post.path) %>'">
         <% } else { %>
             <!-- Pure Thumbnail -->
-            <div class="post-thumbnail-pure mdl-card__media mdl-color-text--grey-50" style="background-color:<%= theme.thumbnail.purecolor %> !important">
+            <div class="post-thumbnail-pure mdl-card__media mdl-color-text--grey-50" style="background-color:<%= theme.thumbnail.purecolor %> !important" onclick="window.location.href='<%= url_for(post.path) %>'">
         <% } %>
     <% } else { %>
         <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50 lazy" data-original="<%= post.thumbnail %>">
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url('<%= url_for(post.thumbnail) %>')" onclick="window.location.href='<%= url_for(post.path) %>'">
     <% } %>
 
         <!-- Post Title -->

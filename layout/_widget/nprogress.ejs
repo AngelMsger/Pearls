@@ -7,22 +7,47 @@
 <% } %>
 
 <script type="text/ls-javascript" id="NProgress-script">
-    NProgress.configure({
-        showSpinner: true
-    });
-    NProgress.start();
-    $('#nprogress .bar').css({
-        'background': '<%= theme.uiux.nprogress_color %>'
-    });
-    $('#nprogress .peg').css({
-        'box-shadow': '0 0 10px <%= theme.uiux.nprogress_color %>, 0 0 15px <%= theme.uiux.nprogress_color %>'
-    });
-    $('#nprogress .spinner-icon').css({
-        'border-top-color': '<%= theme.uiux.nprogress_color %>',
-        'border-left-color': '<%= theme.uiux.nprogress_color %>'
-    });
-    setTimeout(function() {
-        NProgress.done();
-        $('.fade').removeClass('out');
-    }, <%= theme.uiux.nprogress_buffer %>);
+    (function() {
+        function revealFadeElements() {
+            var elements = document.querySelectorAll('.fade.out');
+            Array.prototype.forEach.call(elements, function(element) {
+                element.classList.remove('out');
+            });
+        }
+
+        function applyNProgressStyles() {
+            var bar = document.querySelector('#nprogress .bar');
+            var peg = document.querySelector('#nprogress .peg');
+            var spinner = document.querySelector('#nprogress .spinner-icon');
+
+            if (bar) {
+                bar.style.background = '<%= theme.uiux.nprogress_color %>';
+            }
+
+            if (peg) {
+                peg.style.boxShadow = '0 0 10px <%= theme.uiux.nprogress_color %>, 0 0 15px <%= theme.uiux.nprogress_color %>';
+            }
+
+            if (spinner) {
+                spinner.style.borderTopColor = '<%= theme.uiux.nprogress_color %>';
+                spinner.style.borderLeftColor = '<%= theme.uiux.nprogress_color %>';
+            }
+        }
+
+        if (window.NProgress) {
+            NProgress.configure({
+                showSpinner: true
+            });
+            NProgress.start();
+            applyNProgressStyles();
+        }
+
+        setTimeout(function() {
+            if (window.NProgress) {
+                NProgress.done();
+            }
+
+            revealFadeElements();
+        }, <%= theme.uiux.nprogress_buffer %>);
+    })();
 </script>

@@ -1,4 +1,4 @@
-<div class="post_entry-module mdl-card <% if(theme.card_elevation) { %><%= 'mdl-shadow--' + theme.card_elevation + 'dp' %><% } %> mdl-cell mdl-cell--12-col fade out">
+<div class="post_entry-module mdl-card <% if(theme.card_elevation) { %><%= 'mdl-shadow--' + theme.card_elevation + 'dp' %><% } %> mdl-cell mdl-cell--12-col fade">
     <!-- Post_entry Header -->
     <% if(!post.thumbnail) { %>
         <!-- Post Header Info -->
@@ -20,7 +20,7 @@
 
         <!-- Custom thumbnail -->
         <div class="post_thumbnail-custom">
-            <img src="<%= post.thumbnail %>">
+            <img src="<%= url_for(post.thumbnail) %>" alt="<%= post.title %>'s thumbnail">
     <% } %>
         </div>
 
