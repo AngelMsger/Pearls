@@ -639,6 +639,9 @@ a {
     margin-bottom: 47.59px;
     margin-top: 0;
 }
+#scheme-Paradox .post_entry-module[data-href] {
+    cursor: pointer;
+}
 #scheme-Paradox .material-layout .material-post,
 #scheme-Paradox .material-layout .material-index {
     display: flex;
@@ -938,9 +941,12 @@ a {
     position: fixed;
     top: 5pc;
     left: 1pc;
-    z-index: 8;
+    z-index: 12;
     color: #fff;
     border-radius: 50%
+}
+.post-toc-wrap {
+    z-index: 13;
 }
 @media screen and (max-width: 480px) {
     #scheme-Paradox #post-toc-trigger-btn {
@@ -1801,7 +1807,7 @@ a {
     outline: 0;
     position: fixed;
     top: 2pc;
-    z-index: 8;
+    z-index: 12;
     height: 32px;
     width: 32px
 }

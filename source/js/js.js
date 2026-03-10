@@ -14,17 +14,43 @@
 //**********************************
 //**********************************
 $(document).ready(function() {
-    Array.prototype.forEach.call(document.querySelectorAll('.mdl-card__media'), function(el) {
-        var link = el.querySelector('a');
-        if (!link) {
-            return;
-        }
-        var target = link.getAttribute('href');
+    Array.prototype.forEach.call(document.querySelectorAll('.post_entry-module[data-href]'), function(el) {
+        var target = el.getAttribute('data-href');
         if (!target) {
             return;
         }
-        el.addEventListener('click', function() {
+
+        el.addEventListener('click', function(event) {
+            if (event.target.closest('a, button, input, textarea, label')) {
+                return;
+            }
+
             location.href = target;
+        });
+    });
+
+    Array.prototype.forEach.call(document.querySelectorAll('.mdl-card__media'), function(el) {
+        var link = el.querySelector('a');
+        var target = el.getAttribute('data-href');
+        if (!target && link) {
+            target = link.getAttribute('href');
+        }
+        if (!target) {
+            return;
+        }
+        el.setAttribute('role', 'link');
+        el.setAttribute('tabindex', '0');
+        el.addEventListener('click', function(event) {
+            if (event.target.closest('a, button, input, textarea, label')) {
+                return;
+            }
+            location.href = target;
+        });
+        el.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                location.href = target;
+            }
         });
     });
 
