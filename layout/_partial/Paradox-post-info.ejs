@@ -27,19 +27,21 @@
 
     <!-- Tags (bookmark) -->
     <% if (page.tags && page.tags.length) { %>
-    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-        <i class="material-icons" role="presentation">bookmark</i>
-        <span class="visuallyhidden">bookmark</span>
-    </button>
-    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
-        <li class="mdl-menu__item">
-        <%- list_tags(page.tags, {
-            show_count: false,
-            class: 'post_tag',
-            style: 'none',
-            separator: '</li><li class="mdl-menu__item">'
-        }) %>
-    </ul>
+    <div class="article-menu-anchor">
+        <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" data-inline-menu-toggle="article-functions-tags-menu" aria-controls="article-functions-tags-menu" aria-expanded="false">
+            <i class="material-icons" role="presentation">bookmark</i>
+            <span class="visuallyhidden">bookmark</span>
+        </button>
+        <ul id="article-functions-tags-menu" class="material-inline-menu" aria-hidden="true">
+            <li class="mdl-menu__item">
+            <%- list_tags(page.tags, {
+                show_count: false,
+                class: 'post_tag',
+                style: 'none',
+                separator: '</li><li class="mdl-menu__item">'
+            }) %>
+        </ul>
+    </div>
     <% } %>
 
     <!-- Share -->

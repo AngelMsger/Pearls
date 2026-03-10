@@ -1,90 +1,92 @@
-<button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+<div class="article-menu-anchor">
+<button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" data-inline-menu-toggle="article-functions-share-menu" aria-controls="article-functions-share-menu" aria-expanded="false">
     <i class="material-icons" role="presentation">share</i>
     <span class="visuallyhidden">share</span>
 </button>
-<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+<ul id="article-functions-share-menu" class="material-inline-menu" aria-hidden="true">
     <% if(theme.leancloud.enable === true) { %>
     <!-- Leancloud Views -->
-        <a class="post_share-link" href="#">
-            <li class="mdl-menu__item">
+        <li class="mdl-menu__item">
+            <a class="post_share-link" href="#">
                 <%- partial('_widget/leancloud-views_num') %>
-            </li>
-        </a>
+            </a>
+        </li>
     <% } %>
 
     <% if(theme.busuanzi.enable === true) { %>
         <% if(theme.busuanzi.post_pv === true) { %>
             <!-- Busuanzi Views -->
-            <a class="post_share-link" href="#">
-                <li class="mdl-menu__item">
+            <li class="mdl-menu__item">
+                <a class="post_share-link" href="#">
                     <span id="busuanzi_container_page_pv">
                         <span id="busuanzi_value_page_pv"></span>&nbsp;<%= __('post.views') %>
                     </span>
-                </li>
-            </a>
+                </a>
+            </li>
         <% } %>
     <% } %>
 
     <!-- Share Weibo -->
     <% if(theme.sns_share.weibo === true) { %>
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=<%= page.title %>&url=<%= config.url + url_for(path) %>&pic=<%- config.url + theme.head.favicon %>&searchPic=false&style=simple" target="_blank">
-            <li class="mdl-menu__item">
+        <li class="mdl-menu__item">
+            <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=<%= page.title %>&url=<%= config.url + url_for(path) %>&pic=<%- config.url + theme.head.favicon %>&searchPic=false&style=simple" target="_blank">
                 <%= __('share.toWeibo') %>
-            </li>
-        </a>
+            </a>
+        </li>
     <% } %>
 
     <!-- Share Twitter -->
     <% if(theme.sns_share.twitter === true) { %>
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=<%= page.title %>&url=<%= config.url + url_for(path) %>&via=<%= config.author %>" target="_blank">
-            <li class="mdl-menu__item">
+        <li class="mdl-menu__item">
+            <a class="post_share-link" href="https://twitter.com/intent/tweet?text=<%= page.title %>&url=<%= config.url + url_for(path) %>&via=<%= config.author %>" target="_blank">
                 <%= __('share.toTwitter') %>
-            </li>
-        </a>
+            </a>
+        </li>
     <% } %>
 
     <!-- Share Facebook -->
     <% if(theme.sns_share.facebook === true) { %>
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=<%= config.url + url_for(path) %>" target="_blank">
-            <li class="mdl-menu__item">
+        <li class="mdl-menu__item">
+            <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=<%= config.url + url_for(path) %>" target="_blank">
                 <%= __('share.toFacebook') %>
-            </li>
-        </a>
+            </a>
+        </li>
     <% } %>
 
     <!-- Share Google+ -->
     <% if(theme.sns_share.googleplus === true) { %>
-        <a class="post_share-link" href="https://plus.google.com/share?url=<%= config.url + url_for(path) %>" target="_blank">
-            <li class="mdl-menu__item">
+        <li class="mdl-menu__item">
+            <a class="post_share-link" href="https://plus.google.com/share?url=<%= config.url + url_for(path) %>" target="_blank">
                 <%= __('share.toGplus') %>
-            </li>
-        </a>
+            </a>
+        </li>
     <% } %>
 
     <!-- Share LinkedIn -->
     <% if(theme.sns_share.linkedin === true) { %>
-        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=<%- config.url + url_for(path) %>&title=<%= page.title %>" target="_blank">
-            <li class="mdl-menu__item">
+        <li class="mdl-menu__item">
+            <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=<%- config.url + url_for(path) %>&title=<%= page.title %>" target="_blank">
                 <%= __('share.toLinkedIn') %>
-            </li>
-        </a>
+            </a>
+        </li>
     <% } %>
 
     <!-- Share QQ -->
     <% if(theme.sns_share.qq === true) { %>
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=<%= config.title %>&title=<%= page.title %>&summary=<%= config.description %>&pics=<%- config.url + theme.head.favicon %>&url=<%- config.url +  url_for(path) %>" target="_blank">
-            <li class="mdl-menu__item">
+        <li class="mdl-menu__item">
+            <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=<%= config.title %>&title=<%= page.title %>&summary=<%= config.description %>&pics=<%- config.url + theme.head.favicon %>&url=<%- config.url +  url_for(path) %>" target="_blank">
                 <%= __('share.toQQ') %>
-            </li>
-        </a>
+            </a>
+        </li>
     <% } %>
 
     <!-- Share Telegram -->
     <% if(theme.sns_share.telegram === true) { %>
-        <a class="post_share-link" href="https://telegram.me/share/url?url=<%- config.url + url_for(path) %>&text=<%= page.title %>" target="_blank">
-            <li class="mdl-menu__item">
+        <li class="mdl-menu__item">
+            <a class="post_share-link" href="https://telegram.me/share/url?url=<%- config.url + url_for(path) %>&text=<%= page.title %>" target="_blank">
                 <%= __('share.toTelegram') %>
-            </li>
-        </a>
+            </a>
+        </li>
     <% } %>
 </ul>
+</div>

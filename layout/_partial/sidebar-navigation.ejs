@@ -32,15 +32,15 @@
 
     <!-- Archives  -->
     <% if(theme.sidebar.archives.use === true) { %>
-        <li class="dropdown">
-            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+        <li class="dropdown" data-managed-dropdown>
+            <a href="#" class="ripple-effect dropdown-toggle" data-sidebar-dropdown-toggle aria-expanded="false" aria-controls="sidebar-archives-menu">
                 <% if(theme.sidebar.archives.icon) { %>
                     <i class="material-icons sidebar-material-icons"><%= theme.sidebar.archives.icon %></i>
                 <% } %>
                     <%= __('sidebar.archive') %>
                 <b class="caret"></b>
             </a>
-            <ul class="dropdown-menu">
+            <ul id="sidebar-archives-menu" class="dropdown-menu" aria-hidden="true">
             <li>
                 <%- list_archives({
                     show_count: true,
@@ -58,15 +58,15 @@
 
     <!-- Categories  -->
     <% if(theme.sidebar.categories.use === true) { %>
-        <li class="dropdown">
-            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+        <li class="dropdown" data-managed-dropdown>
+            <a href="#" class="ripple-effect dropdown-toggle" data-sidebar-dropdown-toggle aria-expanded="false" aria-controls="sidebar-categories-menu">
                 <% if(theme.sidebar.categories.icon) { %>
                     <i class="material-icons sidebar-material-icons"><%= theme.sidebar.categories.icon %></i>
                 <% } %>
                 <%= __('title.category') %>
                 <b class="caret"></b>
             </a>
-            <ul class="dropdown-menu">
+            <ul id="sidebar-categories-menu" class="dropdown-menu" aria-hidden="true">
                 <li>
                 <%- list_categories({
                     show_count: true,

@@ -24,11 +24,14 @@
     }) %>
     <% if(toc_obj.length > 0) { %>
     <button id="post-toc-trigger-btn"
-        class="mdl-button mdl-js-button mdl-button--icon">
+        class="mdl-button mdl-js-button mdl-button--icon"
+        data-post-toc-toggle
+        aria-controls="post-toc-menu"
+        aria-expanded="false">
         <i class="material-icons">format_list_numbered</i>
     </button>
 
-    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+    <ul id="post-toc-menu" class="post-toc-wrap" style="max-height:80vh; overflow-y:scroll;" aria-hidden="true">
         <%- toc_obj %>
     </ul>
     <% } %>
