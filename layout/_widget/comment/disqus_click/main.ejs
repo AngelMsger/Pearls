@@ -1,4 +1,4 @@
-<div id="disqus_thread"></div>
+<div id="disqus_thread" data-shortname="<%= theme.comment.shortname %>"></div>
 
 <!-- add animation -->
 <style>
@@ -27,12 +27,12 @@
             color: #fff;
             background-color: <%= theme.uiux.button_color %>;
             text-shadow: 0;
-            display: none
+            display: inline-flex
         }
 </style>
 	
 <div class="btn_click_load"> 
-    <button class="disqus_click_btn"><%= __('post.comments_load_button') %></button>
+    <button class="disqus_click_btn" type="button"><%= __('post.comments_load_button') %></button>
 </div>
 
 <script type="text/javascript">
@@ -41,33 +41,3 @@
         this.page.identifier = '<%= page.permalink %>'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
-
-<script type="text/ls-javascript" id="disqus-lazy-load-script">
-    $.ajax({
-        url: 'https://disqus.com/next/config.json',
-        timeout: 4000,
-        type: 'GET',
-        success: (function() {
-            var d = document;
-            var s = d.createElement('script');
-            s.src = '//<%= theme.comment.shortname %>.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', + new Date());
-            (d.head || d.body).appendChild(s);
-            $('.disqus_click_btn').css('display','none');
-        })(),
-        error: function() {
-          $('.disqus_click_btn').css('display','block');
-        }
-    });
-    $('.btn_click_load').click(function() {  //click to load comments
-        (function() { // DON'T EDIT BELOW THIS LINE
-            var d = document;
-            var s = d.createElement('script');
-            s.src = '//<%= theme.comment.shortname %>.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', + new Date());
-            (d.head || d.body).appendChild(s);
-        })();
-        $('.disqus_click_btn').css('display','none');
-    });
-</script>
-  	

@@ -19,4 +19,11 @@
         lang:'<%= theme.comment.valine_lang %>',
         guest_info: guest_info
     });
+    (function() {
+        var shell = document.querySelector('.comment-shell[data-comment-provider="valine"]');
+        if (shell) {
+            shell.classList.remove('is-loading');
+            shell.classList.add('is-ready');
+        }
+    })();
 </script>

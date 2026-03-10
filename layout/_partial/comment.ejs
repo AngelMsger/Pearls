@@ -1,3 +1,6 @@
 <% if(theme.comment.use) { %>
-    <%- partial('_widget/comment/' + theme.comment.use + '/enter') %>
+    <div class="comment-shell is-loading" data-comment-provider="<%= theme.comment.use %>">
+        <div class="comment-status">Loading comments...</div>
+        <%- partial('_widget/comment/' + theme.comment.use + '/enter') %>
+    </div>
 <% } %>

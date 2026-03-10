@@ -29,7 +29,7 @@
             <% if (site.data.gallery) { %>
                 <% for (var i in site.data.gallery) { %>
                     <article class="thumb">
-                        <a href="<%= site.data.gallery[i].full_link %>" class="image lazy" data-original="<%= site.data.gallery[i].thumb_link %>"><img class="lazy" data-original="<%= site.data.gallery[i].thumb_link %>" alt="<%= i %>" /></a>
+                        <a href="<%= site.data.gallery[i].full_link %>" class="image"><img src="<%= site.data.gallery[i].thumb_link %>" loading="lazy" alt="<%= i %>" /></a>
                         <h2><%= i %></h2>
                         <p><%= site.data.gallery[i].descr %></p>
                     </article>
@@ -80,30 +80,6 @@
     </div>
 
     <!-- Scripts -->
-    <% if(theme.vendors.materialcdn) { %>
-        <script src="<%= theme.vendors.materialcdn + '/js/gallery/gallery.js' %>"></script>
-    <% } else { %>
-        <script src="<%= url_for('js/gallery/gallery.js') %>"></script>
-    <% } %>
-
-    <% if(theme.vendors.materialcdn) { %>
-        <%- jsLsload({path:(theme.vendors.materialcdn + '/js/lazyload.min.js'),key:'lazyload_js'}) %>
-    <% } else { %>
-        <%- jsLsload({path:('js/lazyload.min.js'),key:'lazyload_js'}) %>
-    <% } %>
-
-    <script>
-        queue.offer(function(){
-            $('.lazy').lazyload({
-              effect: 'fadeIn',
-              event: 'scrollstop'
-            });
-        })
-        <!-- Start Queue -->
-        $(document).ready(function(){
-            setInterval(function(){
-                queue.execNext();
-            },200);
-        });
-    </script>
+    <script src="<%= url_for('js/gallery/gallery.js') %>"></script>
+    <script src="<%= url_for('js/progressive.js') %>" defer></script>
 </body>

@@ -23,12 +23,4 @@ module.exports = [
       'no-console': 'off',
     },
   },
-  {
-    files: ['scripts/helper.js'],
-    languageOptions: {
-      globals: {
-        hexo: 'readonly',
-      },
-    },
-  },
 ];

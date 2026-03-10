@@ -28,7 +28,6 @@ url:
 
 # Schemes
 scheme: Paradox
-# scheme: Isolation
 
 # UI & UX: slogan, color, effect
 uiux:
@@ -317,7 +316,6 @@ vendors:
     # nprogress 0.2.0
     nprogress:
     # FontAwesome 4.5.0
-    fontawesome:
     # MathJax 2.7.0-2.7.1
     mathjax:
     # Prettify r298 (only prettify.js)

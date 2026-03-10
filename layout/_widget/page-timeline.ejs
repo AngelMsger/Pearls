@@ -429,14 +429,19 @@
    	<% } -%>
 </section>
 
-<script type="text/ls-javascript" id="page-timeline-script">
-    var adjustFooter = function() {
-        if( ($('#bottom').offset().top + $('#bottom').outerHeight() )<$(window).height() ) {
-            var footerBottom = $(window).height() - $('#bottom').outerHeight() - $('#bottom').offset().top;
-            $('#bottom').css('bottom', '-' + footerBottom + 'px');
+<script>
+    document.addEventListener('DOMContentLoaded', function onReady() {
+        var bottom = document.getElementById('bottom');
+
+        if (!bottom) {
+            return;
         }
-    };
-    $(document).ready(function() {
-        adjustFooter();
+
+        var bottomTop = bottom.getBoundingClientRect().top + window.pageYOffset;
+        var bottomEdge = bottomTop + bottom.offsetHeight;
+
+        if (bottomEdge < window.innerHeight) {
+            bottom.style.bottom = '-' + (window.innerHeight - bottom.offsetHeight - bottomTop) + 'px';
+        }
     });
 </script>

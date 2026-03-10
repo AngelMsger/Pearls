@@ -1,17 +1,16 @@
 <% if(theme.vendors.nprogress) { %>
-    <%- jsLsload({path:(theme.vendors.nprogress),key:'np_js'}) %>
-<% } else if(theme.vendors.materialcdn) { %>
-    <%- jsLsload({path:(theme.vendors.materialcdn + '/js/nprogress.js'),key:'np_js'}) %>
+    <script src="<%= theme.vendors.nprogress %>" defer></script>
 <% } else { %>
-    <%- jsLsload({path:('js/nprogress.js'),key:'np_js'}) %>
+    <script src="<%= url_for('js/nprogress.js') %>" defer></script>
 <% } %>
 
-<script type="text/ls-javascript" id="NProgress-script">
+<script>
     (function() {
         function revealFadeElements() {
-            var elements = document.querySelectorAll('.fade.out');
+            var elements = document.querySelectorAll('.reveal-on-ready.is-pending');
             Array.prototype.forEach.call(elements, function(element) {
-                element.classList.remove('out');
+                element.classList.remove('is-pending');
+                element.classList.add('is-ready');
             });
         }
 
@@ -34,20 +33,22 @@
             }
         }
 
-        if (window.NProgress) {
-            NProgress.configure({
-                showSpinner: true
-            });
-            NProgress.start();
-            applyNProgressStyles();
-        }
-
-        setTimeout(function() {
+        document.addEventListener('DOMContentLoaded', function onReady() {
             if (window.NProgress) {
-                NProgress.done();
+                NProgress.configure({
+                    showSpinner: true
+                });
+                NProgress.start();
+                applyNProgressStyles();
             }
 
-            revealFadeElements();
-        }, <%= theme.uiux.nprogress_buffer %>);
+            setTimeout(function() {
+                if (window.NProgress) {
+                    NProgress.done();
+                }
+
+                revealFadeElements();
+            }, <%= theme.uiux.nprogress_buffer %>);
+        });
     })();
 </script>

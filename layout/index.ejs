@@ -1,6 +1,6 @@
 <!-- Index Module -->
 <div class="material-index mdl-grid">
-    <% if( (theme.scheme === 'Paradox') && (page.current === 1) && (is_home()) ) { %>
+    <% if( (page.current === 1) && (is_home()) ) { %>
         <!-- Paradox Header -->
         <%- partial('_partial/daily_pic') %>
         <%- partial('_partial/blog_info') %>
@@ -11,14 +11,8 @@
     <% if(typeof hasposttop === 'function') { %>
         <% if(hasposttop(site.posts)) { %>
             <% getposttop(site.posts).each(function(toppost){ %>
-                <% if(theme.scheme === 'Paradox'){ %>
-                    <!-- Paradox Thumbnail -->
-                    <%- partial('_partial/Paradox-post_entry', { post: toppost, index: true, pin: true }) %>
-                <% } %>
-                <% if(theme.scheme === 'Isolation'){ %>
-                    <!-- Isolation Thumbnail -->
-                    <%- partial('_partial/Isolation-post_entry', { post: toppost, index: true, pin: true }) %>
-                <% } %>
+                <!-- Paradox Thumbnail -->
+                <%- partial('_partial/Paradox-post_entry', { post: toppost, index: true, pin: true }) %>
             <% }); %>
         <% } %>
     <% } %>
@@ -26,14 +20,8 @@
     <!-- Normal Post -->
     <% page.posts.each(function(post) { %>
         <% if(!((typeof hasposttop === 'function') && post.top)) { %>
-            <% if(theme.scheme === 'Paradox') { %>
-                <!-- Paradox Thumbnail -->
-                <%- partial('_partial/Paradox-post_entry', { post: post, index: true, pin: false }) %>
-            <% } %>
-            <% if(theme.scheme === 'Isolation') { %>
-                <!-- Isolation Thumbnail -->
-                <%- partial('_partial/Isolation-post_entry', { post: post, index: true, pin: false }) %>
-            <% } %>
+            <!-- Paradox Thumbnail -->
+            <%- partial('_partial/Paradox-post_entry', { post: post, index: true, pin: false }) %>
         <% } %>
     <% }); %>
 
@@ -49,7 +37,5 @@
         </nav>
     <% } %>
 
-    <% if(theme.scheme === 'Paradox') { %>
-        <%- partial('_partial/Paradox-post_entry-thumbnail') %>
-    <% } %>
+    <%- partial('_partial/Paradox-post_entry-thumbnail') %>
 </div>
